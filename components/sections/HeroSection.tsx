@@ -3,6 +3,16 @@ import { revealDelay } from "@/lib/utils";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 
+/** The kinds of websites shown under the hero buttons. */
+const websiteTypes = [
+  "Bitcoin Investment Websites",
+  "E-commerce Websites",
+  "Blogging Websites",
+  "Banking Websites",
+  "Logistics & Delivery Websites",
+  "Shipping Websites",
+];
+
 export function HeroSection() {
   return (
     <section id="home" aria-labelledby="hero-title" className="relative isolate pt-32 pb-20 sm:pt-40 lg:pt-44 lg:pb-28">
@@ -48,6 +58,23 @@ export function HeroSection() {
             <ButtonLink href="#contact" variant="secondary" size="lg">
               Let&apos;s Build Something
             </ButtonLink>
+          </div>
+
+          <div className="animate-rise mx-auto mt-10 max-w-2xl" style={revealDelay(460)}>
+            <p id="hero-builds" className="text-eyebrow text-faint">
+              Websites I build
+            </p>
+            <ul aria-labelledby="hero-builds" className="mt-4 flex flex-wrap justify-center gap-2">
+              {websiteTypes.map((type) => (
+                <li
+                  key={type}
+                  className="glass inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[0.8rem] text-fg/85 sm:text-sm"
+                >
+                  <span aria-hidden="true" className="size-1.5 shrink-0 rotate-45 bg-[linear-gradient(135deg,#c4b5fd,#60a5fa)]" />
+                  {type}
+                </li>
+              ))}
+            </ul>
           </div>
 
           <FloatingLabel className="top-2 -left-24" delay="-2s" dot="bg-violet">
