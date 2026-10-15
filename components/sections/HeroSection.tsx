@@ -1,16 +1,18 @@
-import { ArrowRight, Bitcoin, Landmark, Newspaper, Ship, ShoppingBag, Truck, type LucideIcon } from "lucide-react";
+import type { ComponentType } from "react";
+import { ArrowRight, Bitcoin, Landmark, Newspaper, ShoppingBag, Truck } from "lucide-react";
 import { revealDelay } from "@/lib/utils";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 /** The kinds of websites listed in the hero's right-hand panel. */
-const websiteTypes: { label: string; icon: LucideIcon }[] = [
+const websiteTypes: { label: string; icon: ComponentType<{ className?: string }> }[] = [
   { label: "Bitcoin Investment Websites", icon: Bitcoin },
   { label: "E-commerce Websites", icon: ShoppingBag },
   { label: "Blogging Websites", icon: Newspaper },
   { label: "Banking Websites", icon: Landmark },
   { label: "Logistics & Delivery Websites", icon: Truck },
-  { label: "Shipping Websites", icon: Ship },
+  { label: "WhatsApp Checkout Stores", icon: WhatsAppIcon },
 ];
 
 export function HeroSection() {
