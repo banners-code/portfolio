@@ -25,7 +25,7 @@ export function Portrait({
   className?: string;
 }) {
   return (
-    <figure className={cn("group relative mx-auto w-full max-w-[26rem] lg:max-w-none", className)}>
+    <figure className={cn("group relative mx-auto w-full max-w-[26rem] md:max-w-none", className)}>
       {fileLabel ? (
         <p aria-hidden="true" className="mb-3 flex items-center gap-2 font-mono text-[0.7rem] text-faint">
           <span className="size-1.5 rotate-45 bg-violet" />
@@ -43,7 +43,7 @@ export function Portrait({
             width={width}
             height={height}
             alt={`Portrait of ${name}`}
-            sizes="(min-width: 1024px) 30rem, (min-width: 640px) 26rem, 92vw"
+            sizes="(min-width: 1024px) 30rem, (min-width: 768px) 40vw, 12rem"
             className="size-full object-cover object-[50%_42%] transition-transform duration-[1200ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.03]"
           />
           <span aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(135deg,rgb(167_139_250/0.22),transparent_45%,rgb(96_165_250/0.2))] mix-blend-soft-light" />

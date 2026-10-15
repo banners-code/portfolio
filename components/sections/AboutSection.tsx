@@ -45,13 +45,13 @@ export function AboutSection() {
 
   return (
     <section id="about" aria-labelledby="about-title" className="relative py-20 sm:py-28">
-      <Container className="relative isolate grid items-center gap-14 lg:grid-cols-12 lg:gap-14">
+      <Container className="relative isolate grid items-center gap-14 md:grid-cols-12 md:gap-10 lg:gap-14">
         {/* Typing code that starts above the heading and runs behind it. */}
         <TypingCode
           snippets={codeSnippets}
           className="pointer-events-none absolute -top-[4.5rem] right-4 left-4 -z-10 overflow-hidden text-[0.8rem] [mask-image:linear-gradient(to_bottom,transparent_0%,#000_10%,#000_34%,transparent_52%)] sm:[mask-image:linear-gradient(to_bottom,transparent_0%,#000_12%,#000_62%,transparent_100%)] sm:-top-20 sm:right-6 sm:left-[10.5rem] sm:text-[1rem] lg:right-8 lg:left-[11rem] lg:text-[1.05rem]"
         />
-        <div className="lg:col-span-7">
+        <div className="md:col-span-7">
           <SectionHeading
             index="01"
             eyebrow="About"
@@ -64,7 +64,13 @@ export function AboutSection() {
               </>
             }
           />
-          <div className="mt-8 max-w-2xl space-y-5 text-[1.05rem] leading-relaxed text-muted" data-reveal="" style={revealDelay(80)}>
+          <div className="mt-8 flow-root max-w-2xl space-y-5 text-[1.05rem] leading-relaxed text-muted" data-reveal="" style={revealDelay(80)}>
+            {/* Phones: a smaller portrait sits beside the text, which wraps around it. */}
+            {photo ? (
+              <div className="float-right mt-1 mb-4 ml-5 w-[42%] max-w-[12rem] md:hidden">
+                <Portrait src={photo.src} width={photo.width} height={photo.height} name={name || siteConfig.brand.name} />
+              </div>
+            ) : null}
             <p>
               {intro} and Computer Science student at {university} in {country}. I learn by building: taking an idea, giving it
               structure, and working through the details until it holds together as something people can actually use.
@@ -87,7 +93,7 @@ export function AboutSection() {
         </div>
 
         {photo ? (
-          <div className="mx-auto w-full max-w-[26rem] lg:col-span-5 lg:max-w-none" data-reveal="" style={revealDelay(120)}>
+          <div className="hidden w-full md:col-span-5 md:block" data-reveal="" style={revealDelay(120)}>
             <Portrait
               src={photo.src}
               width={photo.width}
