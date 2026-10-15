@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, sectionNumber } from "@/lib/site-config";
 import { buttonClasses } from "@/components/ui/Button";
 import { cn, sectionHref } from "@/lib/utils";
 
@@ -36,14 +36,14 @@ export function MobileMenu({
       className="glass animate-fade-in mx-auto mt-2 max-w-[76rem] rounded-3xl p-2 lg:hidden"
     >
       <ul className="flex flex-col">
-        {siteConfig.nav.map((item, index) => {
+        {siteConfig.nav.map((item) => {
           const active = activeId === item.id;
           return (
             <li key={item.id}>
               <Link
                 href={sectionHref(item.id)}
                 onClick={onNavigate}
-                aria-current={active ? "true" : undefined}
+                aria-current={active ? "location" : undefined}
                 className={cn(
                   "flex min-h-12 items-center justify-between rounded-2xl px-4 text-base transition-colors",
                   active ? "bg-white/[0.07] text-fg" : "text-muted hover:bg-white/[0.04] hover:text-fg",
@@ -51,7 +51,7 @@ export function MobileMenu({
               >
                 {item.label}
                 <span className="font-mono text-xs text-faint" aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
+                  {sectionNumber(item.id)}
                 </span>
               </Link>
             </li>

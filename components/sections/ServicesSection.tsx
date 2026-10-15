@@ -1,7 +1,9 @@
+import { sectionNumber, whatsappLink } from "@/lib/site-config";
 import { ArrowRight, Check, CodeXml, FlaskConical, LayoutTemplate, Network, ShoppingBag, type LucideIcon } from "lucide-react";
 import { projectProcess, services, type ServiceIcon } from "@/lib/services";
 import { cn, revealDelay } from "@/lib/utils";
 import { ButtonLink } from "@/components/ui/Button";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -15,10 +17,10 @@ const serviceIcons: Record<ServiceIcon, LucideIcon> = {
 
 export function ServicesSection() {
   return (
-    <section id="services" aria-labelledby="services-title" className="relative py-20 sm:py-28">
+    <section id="services" aria-labelledby="services-title" className="relative py-16 sm:py-20">
       <Container>
         <SectionHeading
-          index="04"
+          index={sectionNumber("services")}
           eyebrow="Services"
           command="./services --list"
           id="services-title"
@@ -29,6 +31,7 @@ export function ServicesSection() {
         <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => {
             const Icon = serviceIcons[service.icon];
+            const chat = whatsappLink(`Hi, I'd like to talk about ${service.title.toLowerCase()}.`);
             return (
               <article
                 key={service.id}
@@ -67,15 +70,29 @@ export function ServicesSection() {
                   ))}
                 </ul>
                 {service.note ? <p className="mt-5 text-xs leading-relaxed text-faint">{service.note}</p> : null}
-                <a
-                  href="#contact"
-                  data-prefill={service.title}
-                  className="mt-auto inline-flex min-h-11 items-center gap-1.5 self-start pt-6 text-sm font-medium text-fg transition-colors hover:text-violet-soft"
-                >
-                  Discuss your project
-                  <span className="sr-only">: {service.title}</span>
-                  <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
-                </a>
+                <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-1 pt-6">
+                  <a
+                    href="#contact"
+                    data-prefill={service.title}
+                    className="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-fg transition-colors hover:text-violet-soft"
+                  >
+                    Discuss your project
+                    <span className="sr-only">: {service.title}</span>
+                    <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+                  </a>
+                  {chat ? (
+                    <a
+                      href={chat}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative z-10 inline-flex min-h-11 items-center gap-1.5 text-sm text-muted transition-colors hover:text-fg"
+                    >
+                      <WhatsAppIcon className="size-3.5 text-[#25d366]" />
+                      WhatsApp
+                      <span className="sr-only">: {service.title} (opens in a new tab)</span>
+                    </a>
+                  ) : null}
+                </div>
               </article>
             );
           })}

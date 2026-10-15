@@ -1,4 +1,5 @@
 import { AboutSection } from "@/components/sections/AboutSection";
+import { BuildsSection } from "@/components/sections/BuildsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { HeroSection } from "@/components/sections/HeroSection";
@@ -12,14 +13,16 @@ export default function HomePage() {
   return (
     <>
       <IntroOverlay />
-      <SectionRail />
       <HeroSection />
       <AboutSection />
       <ProjectsSection />
+      <BuildsSection />
       <SkillsSection />
       <ServicesSection />
       <FaqSection />
       <ContactSection />
+      {/* After the content, so keyboard focus reaches it last. */}
+      <SectionRail />
     </>
   );
 }

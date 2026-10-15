@@ -1,3 +1,4 @@
+import { sectionNumber } from "@/lib/site-config";
 import { CodeXml, Database, GitBranch, Layers, Network, type LucideIcon } from "lucide-react";
 import { skillGroups, skillLevels, type SkillGroupIcon, type SkillLevel } from "@/lib/skills";
 import { cn, revealDelay } from "@/lib/utils";
@@ -31,10 +32,10 @@ function LevelGlyph({ level }: { level: SkillLevel }) {
 
 export function SkillsSection() {
   return (
-    <section id="skills" aria-labelledby="skills-title" className="relative py-20 sm:py-28">
+    <section id="skills" aria-labelledby="skills-title" className="relative py-16 sm:py-20">
       <Container>
         <SectionHeading
-          index="03"
+          index={sectionNumber("skills")}
           eyebrow="Skills"
           command="scan --skills"
           id="skills-title"

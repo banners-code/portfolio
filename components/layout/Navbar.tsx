@@ -11,8 +11,10 @@ import { ButtonLink } from "@/components/ui/Button";
 import { GitHubIcon } from "@/components/ui/GitHubIcon";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { MobileMenu } from "./MobileMenu";
+import { useActiveSection } from "./useActiveSection";
 
 const MENU_ID = "mobile-menu";
+const navIds = siteConfig.nav.map((item) => item.id);
 const iconLink =
   "grid size-10 place-items-center rounded-full text-muted transition-colors hover:bg-white/[0.06] hover:text-fg sm:size-11";
 
@@ -21,7 +23,7 @@ export function Navbar() {
   const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [spyId, setSpyId] = useState<string>("home");
+  const spyId = useActiveSection(navIds, isHome);
   const headerRef = useRef<HTMLElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
 
@@ -35,23 +37,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Scrollspy: the section crossing the middle band of the viewport is the current one.
-  useEffect(() => {
-    if (!isHome) return;
-    const sections = siteConfig.nav
-      .map((item) => document.getElementById(item.id))
-      .filter((element): element is HTMLElement => element !== null);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) setSpyId(entry.target.id);
-        }
-      },
-      { rootMargin: "-42% 0px -55% 0px" },
-    );
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, [isHome]);
 
   useEffect(() => {
     if (!open) return;
@@ -96,7 +81,7 @@ export function Navbar() {
                 <li key={item.id}>
                   <Link
                     href={sectionHref(item.id)}
-                    aria-current={active ? "true" : undefined}
+                    aria-current={active ? "location" : undefined}
                     className={cn(
                       "relative inline-flex min-h-10 items-center rounded-full px-3.5 text-sm transition-colors duration-300",
                       active ? "bg-white/[0.08] text-fg" : "text-muted hover:text-fg",

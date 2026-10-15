@@ -29,7 +29,7 @@ export const skillGroups: SkillGroup[] = [
     title: "Frontend",
     icon: "frontend",
     summary: "Building interfaces that hold up on every screen size.",
-    usedIn: ["CENT Originals", "Beauty Commerce", "Gram Earner"],
+    usedIn: ["CENT Originals", "Beauty Commerce", "WhatsApp Checkout Store", "Gram Earner"],
     skills: [
       { name: "HTML5", level: "hands-on" },
       { name: "CSS3", level: "hands-on" },
@@ -94,7 +94,7 @@ export const skillGroups: SkillGroup[] = [
     title: "Web Product Development",
     icon: "product",
     summary: "Thinking past single pages to whole products: flows, admin tools and the systems behind them.",
-    usedIn: ["Beauty Commerce", "CENT Originals", "Gram Earner", "Multi-School Platform"],
+    usedIn: ["Beauty Commerce", "CENT Originals", "WhatsApp Checkout Store", "Gram Earner", "Multi-School Platform"],
     skills: [
       { name: "E-commerce interfaces", level: "project" },
       { name: "Product catalogues & carts", level: "project" },

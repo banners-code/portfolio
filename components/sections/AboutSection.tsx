@@ -1,4 +1,4 @@
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, sectionNumber } from "@/lib/site-config";
 import { revealDelay } from "@/lib/utils";
 import { Container } from "@/components/ui/Container";
 import { Portrait } from "@/components/ui/Portrait";
@@ -44,7 +44,7 @@ export function AboutSection() {
   const intro = name ? `I'm ${name} — a ${role.toLowerCase()}` : `I'm a ${role.toLowerCase()}`;
 
   return (
-    <section id="about" aria-labelledby="about-title" className="relative py-20 sm:py-28">
+    <section id="about" aria-labelledby="about-title" className="relative py-16 sm:py-20">
       <Container className="relative isolate grid items-center gap-14 md:grid-cols-12 md:gap-10 lg:gap-14">
         {/* Typing code that starts above the heading and runs behind it. */}
         <TypingCode
@@ -53,7 +53,7 @@ export function AboutSection() {
         />
         <div className="md:col-span-7">
           <SectionHeading
-            index="01"
+            index={sectionNumber("about")}
             eyebrow="About"
             id="about-title"
             // A thin dark halo (inherited by the label and heading) keeps text crisp over the typing code.
@@ -78,7 +78,8 @@ export function AboutSection() {
             <p>
               That approach has taken me from client work — I have worked with{" "}
               <span className="text-fg">CENT Originals</span>, a clothing brand — to my own e-commerce platform built with
-              Next.js and Supabase, and to experiments such as a Telegram Mini App prototype.
+              Next.js and Supabase, a WhatsApp checkout store for small businesses, and experiments such as a Telegram Mini
+              App prototype.
             </p>
             <p>
               Along the way I&apos;ve learned that a website is more than its interface. Domains, DNS, hosting and SSL

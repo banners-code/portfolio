@@ -1,6 +1,6 @@
 import { Mail } from "lucide-react";
 import { isContactDeliveryConfigured } from "@/lib/contact-delivery";
-import { contactEmail, siteConfig, whatsappContact } from "@/lib/site-config";
+import { contactEmail, siteConfig, whatsappContact, sectionNumber } from "@/lib/site-config";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { revealDelay } from "@/lib/utils";
 import { ContactForm, type ContactMode } from "@/components/ui/ContactForm";
@@ -17,7 +17,7 @@ export function ContactSection() {
   const mode: ContactMode = isContactDeliveryConfigured() ? "online" : contactEmail ? "mailto" : "offline";
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="relative py-20 sm:py-28">
+    <section id="contact" aria-labelledby="contact-title" className="relative py-16 sm:py-20">
       <Container>
         <div className="glass relative overflow-hidden rounded-[2rem] p-6 sm:p-10 lg:p-14">
           <span
@@ -32,7 +32,7 @@ export function ContactSection() {
           <div className="relative grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
             <div>
               <SectionHeading
-                index="06"
+                index={sectionNumber("contact")}
                 eyebrow="Contact"
                 command="./contact --send"
                 id="contact-title"

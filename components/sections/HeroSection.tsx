@@ -1,23 +1,26 @@
 import type { ComponentType } from "react";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Bitcoin, Landmark, Newspaper, ShoppingBag, Truck } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Bitcoin, Landmark, Newspaper, ShoppingBag, Truck } from "lucide-react";
+import { buildAnchor } from "@/lib/builds";
+import { whatsappLink } from "@/lib/site-config";
 import { revealDelay } from "@/lib/utils";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 /** The kinds of websites listed in the hero's right-hand panel. */
-/** Types with a case study link to it; the rest are plain labels. */
+/** Types with a case study link to it; most others link to their card under "What I can build". */
 const websiteTypes: { label: string; icon: ComponentType<{ className?: string }>; href?: string }[] = [
-  { label: "Bitcoin Investment Websites", icon: Bitcoin },
+  { label: "Bitcoin Investment Websites", icon: Bitcoin, href: `/${buildAnchor("investment")}` },
   { label: "E-commerce Websites", icon: ShoppingBag, href: "/work/beauty-commerce" },
   { label: "Blogging Websites", icon: Newspaper },
-  { label: "Banking Websites", icon: Landmark },
-  { label: "Logistics & Delivery Websites", icon: Truck },
+  { label: "Banking Websites", icon: Landmark, href: `/${buildAnchor("banking")}` },
+  { label: "Logistics & Delivery Websites", icon: Truck, href: `/${buildAnchor("logistics")}` },
   { label: "WhatsApp Checkout Stores", icon: WhatsAppIcon, href: "/work/whatsapp-checkout-store" },
 ];
 
 export function HeroSection() {
+  const chatLink = whatsappLink("Hi, I saw your portfolio and I'd like to talk about a website.");
   return (
     <section id="home" aria-labelledby="hero-title" className="relative isolate pt-32 pb-20 sm:pt-40 lg:pt-44 lg:pb-28">
       {/* Controlled lighting: one slow-drifting violet source behind the headline. */}
@@ -64,6 +67,19 @@ export function HeroSection() {
                 Let&apos;s Build Something
               </ButtonLink>
             </div>
+            {chatLink ? (
+              <a
+                href={chatLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="animate-rise mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-fg/85 transition-colors hover:text-fg"
+                style={revealDelay(440)}
+              >
+                <WhatsAppIcon className="size-4 text-[#25d366]" />
+                Or chat with me on WhatsApp
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            ) : null}
 
           </div>
 
@@ -98,11 +114,15 @@ export function HeroSection() {
                       {href ? (
                         <Link href={href} className={`group ${row} h-full transition-colors hover:bg-white/[0.08] hover:text-fg`}>
                           {content}
-                          <ArrowUpRight
-                            className="size-4 shrink-0 text-violet-soft transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                            aria-hidden="true"
-                          />
-                          <span className="sr-only"> — read the case study</span>
+                          {href.startsWith("/work/") ? (
+                            <ArrowUpRight
+                              className="size-4 shrink-0 text-violet-soft transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                              aria-hidden="true"
+                            />
+                          ) : (
+                            <ArrowDown className="size-4 shrink-0 text-violet-soft transition-transform group-hover:translate-y-0.5" aria-hidden="true" />
+                          )}
+                          <span className="sr-only">{href.startsWith("/work/") ? " — read the case study" : " — see what it includes"}</span>
                         </Link>
                       ) : (
                         <div className={`${row} h-full`}>{content}</div>

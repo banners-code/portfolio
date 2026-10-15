@@ -1,5 +1,6 @@
 import { Plus } from "lucide-react";
 import { faqs } from "@/lib/faq";
+import { sectionNumber } from "@/lib/site-config";
 import { revealDelay } from "@/lib/utils";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -7,11 +8,11 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 /** Client FAQ built on native <details>, so it works without JavaScript and with the keyboard. */
 export function FaqSection() {
   return (
-    <section id="faq" aria-labelledby="faq-title" className="relative py-20 sm:py-28">
+    <section id="faq" aria-labelledby="faq-title" className="relative py-16 sm:py-20">
       <Container className="grid gap-10 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-5">
           <SectionHeading
-            index="05"
+            index={sectionNumber("faq")}
             eyebrow="FAQ"
             command="man faq"
             id="faq-title"

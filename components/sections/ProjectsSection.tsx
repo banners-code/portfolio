@@ -1,4 +1,5 @@
 import { additionalWork, projectFilters, projects, statusMeta, type ProjectStatus } from "@/lib/projects";
+import { sectionNumber } from "@/lib/site-config";
 import { revealDelay } from "@/lib/utils";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -16,10 +17,10 @@ export function ProjectsSection() {
   }));
 
   return (
-    <section id="projects" aria-labelledby="projects-title" className="relative py-20 sm:py-28">
+    <section id="projects" aria-labelledby="projects-title" className="relative py-16 sm:py-20">
       <Container>
         <SectionHeading
-          index="02"
+          index={sectionNumber("projects")}
           eyebrow="Selected work"
           command="ls ./projects"
           id="projects-title"
@@ -53,9 +54,9 @@ export function ProjectsSection() {
               Work that doesn&apos;t need a case study of its own, but has shaped how I build.
             </p>
           </div>
-          <ul className="mt-8 grid gap-px overflow-hidden rounded-2xl bg-line sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-8 flex flex-wrap gap-px overflow-hidden rounded-2xl bg-line">
             {additionalWork.map((item) => (
-              <li key={item.title} className="bg-ink-900/95 p-5">
+              <li key={item.title} className="grow basis-full bg-ink-900/95 p-5 sm:basis-[calc(50%-1px)] lg:basis-[calc(33.333%-1px)]">
                 <p className="flex items-center gap-2.5 text-[0.95rem] font-medium text-fg">
                   <span aria-hidden="true" className="size-1.5 shrink-0 rotate-45 bg-violet" />
                   {item.title}

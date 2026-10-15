@@ -53,6 +53,7 @@ export const siteConfig = {
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
     { id: "projects", label: "Projects" },
+    { id: "builds", label: "Builds" },
     { id: "skills", label: "Skills" },
     { id: "services", label: "Services" },
     { id: "faq", label: "FAQ" },
@@ -119,6 +120,20 @@ export const whatsappContact = (() => {
     : `+${digits}`;
   return { display, href: `https://wa.me/${digits}` };
 })();
+
+/** A WhatsApp chat link with a message already typed, or null when no number is configured. */
+export function whatsappLink(message: string): string | null {
+  return whatsappContact ? `${whatsappContact.href}?text=${encodeURIComponent(message)}` : null;
+}
+
+/** The numbered sections (every nav item except Home), in page order. */
+export const numberedSections = siteConfig.nav.filter((item) => item.id !== "home");
+
+/** A section's two-digit number ("01" for About), shared by headings, the menus and the section rail. */
+export function sectionNumber(id: string): string {
+  const index = numberedSections.findIndex((item) => item.id === id);
+  return index === -1 ? "" : String(index + 1).padStart(2, "0");
+}
 
 export const socialLinks: SocialLink[] = [
   { label: "GitHub", href: siteConfig.social.github },

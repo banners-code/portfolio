@@ -242,7 +242,7 @@ export const projects: Project[] = [
     summary:
       "A hand-coded footwear store for small business owners who already sell on WhatsApp: customers browse and fill a cart, and checkout sends the complete order to the seller's WhatsApp. An admin dashboard keeps products, stock and settings up to date.",
     tech: ["HTML", "CSS", "JavaScript", "Node.js", "WhatsApp"],
-    layout: "standard",
+    layout: "wide",
     preview: { kind: "whatsapp", label: "Illustrative preview" },
     links: [],
     caseStudy: {
