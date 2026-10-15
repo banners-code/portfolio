@@ -35,7 +35,7 @@ export const siteConfig = {
      * CONFIGURE: your professional email address, e.g. "hello@yourdomain.com".
      * While empty, no email link is shown anywhere (the development build shows a reminder instead).
      */
-    email: "",
+    email: "antmich900@gmail.com",
   },
 
   social: {
