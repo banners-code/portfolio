@@ -1,18 +1,20 @@
 import type { ComponentType } from "react";
-import { ArrowRight, Bitcoin, Landmark, Newspaper, ShoppingBag, Truck } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight, Bitcoin, Landmark, Newspaper, ShoppingBag, Truck } from "lucide-react";
 import { revealDelay } from "@/lib/utils";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 /** The kinds of websites listed in the hero's right-hand panel. */
-const websiteTypes: { label: string; icon: ComponentType<{ className?: string }> }[] = [
+/** Types with a case study link to it; the rest are plain labels. */
+const websiteTypes: { label: string; icon: ComponentType<{ className?: string }>; href?: string }[] = [
   { label: "Bitcoin Investment Websites", icon: Bitcoin },
-  { label: "E-commerce Websites", icon: ShoppingBag },
+  { label: "E-commerce Websites", icon: ShoppingBag, href: "/work/beauty-commerce" },
   { label: "Blogging Websites", icon: Newspaper },
   { label: "Banking Websites", icon: Landmark },
   { label: "Logistics & Delivery Websites", icon: Truck },
-  { label: "WhatsApp Checkout Stores", icon: WhatsAppIcon },
+  { label: "WhatsApp Checkout Stores", icon: WhatsAppIcon, href: "/work/whatsapp-checkout-store" },
 ];
 
 export function HeroSection() {
@@ -80,17 +82,34 @@ export function HeroSection() {
                 </span>
               </div>
               <ul aria-labelledby="hero-builds" className="mt-5 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-                {websiteTypes.map(({ label, icon: Icon }) => (
-                  <li
-                    key={label}
-                    className="flex items-center gap-3 rounded-2xl bg-white/[0.04] px-3.5 py-3 text-[0.92rem] text-fg/90 ring-1 ring-white/[0.07] ring-inset transition-colors hover:bg-white/[0.07]"
-                  >
-                    <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-violet/10 text-violet-soft ring-1 ring-violet/25">
-                      <Icon className="size-4" aria-hidden="true" />
-                    </span>
-                    {label}
-                  </li>
-                ))}
+                {websiteTypes.map(({ label, icon: Icon, href }) => {
+                  const content = (
+                    <>
+                      <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-violet/10 text-violet-soft ring-1 ring-violet/25">
+                        <Icon className="size-4" aria-hidden="true" />
+                      </span>
+                      <span className="flex-1">{label}</span>
+                    </>
+                  );
+                  const row =
+                    "flex items-center gap-3 rounded-2xl bg-white/[0.04] px-3.5 py-3 text-[0.92rem] text-fg/90 ring-1 ring-white/[0.07] ring-inset";
+                  return (
+                    <li key={label} className="h-full">
+                      {href ? (
+                        <Link href={href} className={`group ${row} h-full transition-colors hover:bg-white/[0.08] hover:text-fg`}>
+                          {content}
+                          <ArrowUpRight
+                            className="size-4 shrink-0 text-violet-soft transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            aria-hidden="true"
+                          />
+                          <span className="sr-only"> — read the case study</span>
+                        </Link>
+                      ) : (
+                        <div className={`${row} h-full`}>{content}</div>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
