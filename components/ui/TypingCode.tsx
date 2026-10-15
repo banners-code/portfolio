@@ -62,6 +62,7 @@ export function TypingCode({
   gutter = variant === "ghost",
   startHidden = false,
   speed = 1,
+  onComplete,
 }: {
   snippets: CodeSnippet[];
   className?: string;
@@ -75,9 +76,15 @@ export function TypingCode({
   startHidden?: boolean;
   /** Typing speed multiplier (2 = twice as fast). */
   speed?: number;
+  /** Called once when a type-once instance finishes typing. */
+  onComplete?: () => void;
 }) {
   const toneClass = toneClasses[variant];
   const rootRef = useRef<HTMLDivElement>(null);
+  const onCompleteRef = useRef(onComplete);
+  useEffect(() => {
+    onCompleteRef.current = onComplete;
+  });
   // A type-once instance stays typed after it finishes, even if it scrolls out of view and back.
   const finishedRef = useRef(false);
   // Where typing paused, so it resumes rather than restarting when the tab or section comes back.
@@ -142,6 +149,7 @@ export function TypingCode({
           row = lines.length - 1;
           column = lengths[row] ?? 0;
           placeCaret();
+          onCompleteRef.current?.();
           return;
         }
         // Hold the finished snippet, fade it out, then move on to the next one.

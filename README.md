@@ -135,7 +135,7 @@ Each project has:
 - **`lib/services.ts`** — five services with deliverables and optional notes. There are no prices and no guarantees. Each card's "Discuss your project" link scrolls to the contact form and pre-fills the subject. Set `featured` on a service to highlight it (E-commerce is marked "Core experience"). `projectProcess` holds the three numbered steps shown under the services.
 - **`lib/faq.ts`** — the client FAQ. The answers are drawn from your services and projects; keep them in your own words and up to date.
 - **The assistant** (`lib/assistant.ts`) — the floating "Ask about my work" panel offers pre-written questions and answers built from your projects, FAQ and contact settings, so it updates when they do. It isn't AI and sends nothing anywhere. To add a question, add an entry to `buildAssistantEntries()`.
-- **Hero terminal** — the hero's typed `whoami` session is in `components/ui/WhoamiTerminal.tsx`.
+- **Intro** — the home page opens with the typed `whoami` session (`components/ui/WhoamiTerminal.tsx`) full screen, via `components/ui/IntroOverlay.tsx`. It plays once per browser session, can be skipped (button or Escape), and is skipped for reduced motion.
 - **No repeats** — each piece of content appears once: identity in the hero terminal, the story in About, client process under Services, and only questions answered nowhere else in the FAQ. Keep that in mind when adding content.
 
 ## Contact form setup

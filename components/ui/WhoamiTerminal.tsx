@@ -3,10 +3,10 @@ import { cn } from "@/lib/utils";
 import { TypingCode, type CodeSnippet } from "./TypingCode";
 
 /**
- * The hero's `whoami` boot sequence: it types once on load and leaves the caret blinking.
+ * The intro's `whoami` boot sequence: it types once and leaves the caret blinking.
  * Decorative (the page's headings and About section say the same things in plain text).
  */
-export function WhoamiTerminal({ className }: { className?: string }) {
+export function WhoamiTerminal({ className, onComplete }: { className?: string; onComplete?: () => void }) {
   const handle = (siteConfig.owner.name || siteConfig.brand.name).toLowerCase().replace(/\s+/g, "_");
   const role = `${siteConfig.owner.role} · ${siteConfig.brand.name}`.toLowerCase();
 
@@ -34,7 +34,8 @@ export function WhoamiTerminal({ className }: { className?: string }) {
           variant="terminal"
           loop={false}
           startHidden
-          speed={1.6}
+          speed={2.2}
+          onComplete={onComplete}
           className="text-[0.78rem] sm:text-[0.92rem] lg:text-[1rem]"
         />
       </div>

@@ -324,6 +324,40 @@
   transition: none;
 }
 
+/* ─── Intro ─────────────────────────────────────────────────────────────── */
+/* Hidden unless the pre-paint script set html[data-intro]; it stays shown while it fades out. */
+.intro-overlay {
+  display: none;
+  transition: opacity 700ms var(--ease-out-expo);
+}
+
+html[data-intro] .intro-overlay,
+.intro-overlay[data-leaving] {
+  display: grid;
+}
+
+.intro-overlay[data-leaving] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.intro-overlay .intro-panel {
+  transition: transform 700ms var(--ease-out-expo);
+}
+
+.intro-overlay[data-leaving] .intro-panel {
+  transform: scale(0.96) translate3d(0, -12px, 0);
+}
+
+/* While the intro plays, the page behind it waits: no scrolling, and the hero's entrance holds. */
+html[data-intro] {
+  overflow: hidden;
+}
+
+html[data-intro] .animate-rise {
+  animation-play-state: paused;
+}
+
 /* ─── Reduced motion ────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,

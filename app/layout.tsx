@@ -43,7 +43,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${sans.variable} ${mono.variable}`}>
+    // The intro script may set data-intro on <html> before React hydrates.
+    <html suppressHydrationWarning lang="en" data-scroll-behavior="smooth" className={`${sans.variable} ${mono.variable}`}>
       <body className="min-h-dvh">
         <a
           href="#main"
