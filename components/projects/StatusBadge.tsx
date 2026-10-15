@@ -1,8 +1,9 @@
-import { Briefcase, FlaskConical, Hammer, Network, PencilRuler, type LucideIcon } from "lucide-react";
+import { Briefcase, FlaskConical, Hammer, Network, PackageCheck, PencilRuler, type LucideIcon } from "lucide-react";
 import { statusMeta, type ProjectStatus } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 
 const statusStyle: Record<ProjectStatus, { icon: LucideIcon; className: string }> = {
+  built: { icon: PackageCheck, className: "text-status-built bg-status-built/[0.08] ring-status-built/25" },
   client: { icon: Briefcase, className: "text-status-client bg-status-client/[0.08] ring-status-client/25" },
   "in-development": { icon: Hammer, className: "text-status-dev bg-status-dev/[0.08] ring-status-dev/25" },
   prototype: { icon: FlaskConical, className: "text-status-prototype bg-status-prototype/[0.09] ring-status-prototype/25" },

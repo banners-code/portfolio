@@ -6,9 +6,9 @@
  * labelled as planned, and statuses must stay truthful.
  */
 
-export type ProjectStatus = "client" | "in-development" | "prototype" | "planning" | "case-study";
+export type ProjectStatus = "built" | "client" | "in-development" | "prototype" | "planning" | "case-study";
 export type ProjectFilter = "client" | "ecommerce" | "applications" | "technical";
-export type PreviewKind = "cent" | "beauty" | "gramearner" | "school" | "infrastructure";
+export type PreviewKind = "cent" | "beauty" | "whatsapp" | "gramearner" | "school" | "infrastructure";
 export type ProjectLayout = "feature" | "standard" | "wide";
 
 export type ProjectLink = {
@@ -56,6 +56,7 @@ export type Project = {
 };
 
 export const statusMeta: Record<ProjectStatus, { label: string; description: string }> = {
+  built: { label: "Working Build", description: "Built and working, with its core features in place." },
   client: { label: "Client Project", description: "Paid work for a client's business." },
   "in-development": { label: "In Development", description: "Actively being built; not launched yet." },
   prototype: { label: "Prototype", description: "A working interface for exploring an idea — not production software." },
@@ -228,6 +229,79 @@ export const projects: Project[] = [
         "Complete end-to-end payment testing in Korapay's test mode, then work through the launch checklist.",
         "Add beauty categories beyond lip care.",
         "Launch with real product photography and content.",
+      ],
+    },
+  },
+  {
+    slug: "whatsapp-checkout-store",
+    title: "WhatsApp Checkout Store",
+    tagline: "An online store for small businesses, with checkout on WhatsApp",
+    category: "E-commerce · Small Business · Hand-coded",
+    statuses: ["built"],
+    filters: ["ecommerce", "applications"],
+    summary:
+      "A hand-coded footwear store for small business owners who already sell on WhatsApp: customers browse and fill a cart, and checkout sends the complete order to the seller's WhatsApp. An admin dashboard keeps products, stock and settings up to date.",
+    tech: ["HTML", "CSS", "JavaScript", "Node.js", "WhatsApp"],
+    layout: "standard",
+    preview: { kind: "whatsapp", label: "Illustrative preview" },
+    links: [],
+    caseStudy: {
+      overview:
+        "A glass-style online store for footwear, written by hand in plain HTML, CSS and JavaScript with a small Node.js server — no framework. Customers browse products and build a cart; instead of a card-payment checkout, the order goes to the business on WhatsApp, where the sale is confirmed in conversation.",
+      purpose:
+        "Help small business owners sell online in the way they already work. Many small sellers take orders through WhatsApp chats; this store gives them a proper catalogue and cart without forcing them to set up a payment gateway first.",
+      role: "Design and development of the storefront, the WhatsApp checkout, the Node.js server and the admin dashboard.",
+      objective:
+        "Turn \"Is this available? How much? What sizes?\" chat threads into one complete, readable order message — and give the owner a simple place to manage what's for sale.",
+      approach: {
+        title: "Design approach",
+        items: [
+          "Built around the seller's existing habit: WhatsApp stays the place where the business talks to customers, confirms availability and agrees delivery and payment.",
+          "A glass-style storefront that presents the products clearly, so customers can choose before they start a conversation.",
+          "Checkout sends the full order — the items and the order details — so the seller doesn't have to piece it together from several messages.",
+          "An admin dashboard for people who aren't developers: products, stock and settings are changed there, not in the code.",
+        ],
+      },
+      implementation: {
+        title: "Technical implementation",
+        items: [
+          "Plain HTML, CSS and JavaScript for the storefront, with no framework or build step.",
+          "A cart that collects the customer's choices and sends the complete order to the business's WhatsApp.",
+          "A small Node.js server behind the store and its admin.",
+          "An admin dashboard for managing products, stock and store settings.",
+        ],
+      },
+      challenges: [
+        {
+          title: "Selling without a payment gateway",
+          body: "Many small businesses aren't ready for — or don't want — an online card-payment setup, but still need a way to take orders from a website.",
+        },
+        {
+          title: "Orders that arrive in pieces",
+          body: "Taking orders over chat usually means many back-and-forth messages before the seller knows exactly what the customer wants.",
+        },
+        {
+          title: "Keeping the shop current",
+          body: "A small business owner needs to change products and stock levels without asking a developer each time.",
+        },
+      ],
+      solutions: {
+        title: "Solutions",
+        items: [
+          "Made WhatsApp the checkout: the order goes straight to the seller, and payment and delivery are agreed in the chat they already manage.",
+          "Wrote the full order into the message the customer sends, so the conversation starts with everything the seller needs.",
+          "Built an admin dashboard for products, stock and settings.",
+        ],
+      },
+      status:
+        "Working build. The storefront, WhatsApp checkout and admin dashboard are in place. The store doesn't take payments online — by design, payment is arranged between the seller and the customer on WhatsApp.",
+      learned: [
+        "The right checkout depends on the business. For a small seller, meeting customers where they already talk can matter more than an online payment page.",
+        "A store doesn't need a framework to be useful — plain HTML, CSS and JavaScript go a long way for a focused catalogue.",
+      ],
+      nextSteps: [
+        "Adapt the same approach for other small businesses — handmade goods, fashion, food and more.",
+        "Offer online payment as an optional addition for sellers who want it.",
       ],
     },
   },
@@ -455,11 +529,6 @@ export const projects: Project[] = [
 
 /** Smaller pieces of genuine work that don't warrant their own case study. */
 export const additionalWork: { title: string; description: string }[] = [
-  {
-    title: "Footwear storefront with WhatsApp ordering",
-    description:
-      "A glass-style footwear store in plain HTML, CSS and JavaScript with a small Node.js server: a cart that sends the full order to WhatsApp, and an admin dashboard for products, stock and settings.",
-  },
   {
     title: "Business and trading-related website concepts",
     description: "Exploratory website concepts, including trading-related sites, and business website development.",

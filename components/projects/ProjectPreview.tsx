@@ -30,6 +30,7 @@ export function ProjectPreview({ project, className }: { project: Project; class
 const descriptions: Record<Exclude<Project["preview"]["kind"], "infrastructure">, string> = {
   cent: "a dark burgundy-and-gold clothing storefront with the CENT emblem and a row of product cards.",
   beauty: "a soft pink beauty storefront with product cards and a bank-transfer payment status panel.",
+  whatsapp: "a glass-style footwear store with a cart beside a WhatsApp chat that holds the complete order.",
   gramearner: "a Telegram bot chat with a Launch app button beside the Gram Earner Mini App on a phone.",
   school: "a school management dashboard with a school switcher, role badge and permissions matrix.",
 };
@@ -182,6 +183,86 @@ function BeautyMockup() {
   );
 }
 
+/** A simple trainer silhouette: sole, upper and collar. */
+function Shoe({ upper, sole }: { upper: string; sole: string }) {
+  return (
+    <span className="relative block h-[46%] w-[78%]">
+      <span
+        className="absolute inset-x-0 top-0 bottom-[18%]"
+        style={{ background: upper, clipPath: "polygon(0 45%,38% 30%,52% 0,70% 6%,74% 40%,100% 62%,100% 100%,0 100%)" }}
+      />
+      <span className="absolute inset-x-0 bottom-0 h-[24%] rounded-[0.6cqw]" style={{ background: sole }} />
+    </span>
+  );
+}
+
+function WhatsAppStoreMockup() {
+  const shoes = [
+    { upper: "#f5f5f4", sole: "#a8a29e" },
+    { upper: "#1f2937", sole: "#e5e7eb" },
+    { upper: "#c2410c", sole: "#fef3c7" },
+    { upper: "#0f766e", sole: "#f5f5f4" },
+  ];
+  return (
+    <div className="absolute inset-0 bg-[radial-gradient(110%_100%_at_20%_0%,#1f3b2f_0%,#0e1a17_55%,#080b0d_100%)]">
+      {/* Storefront */}
+      <div className="absolute top-[9%] left-[6%] -bottom-[8%] w-[56%] overflow-hidden rounded-t-[2cqw] border border-white/15 bg-white/[0.07] shadow-[0_30px_80px_-20px_rgb(0_0_0/0.8)] backdrop-blur-md">
+        <WindowChrome />
+        <div className="flex items-center justify-between px-[3.6cqw] py-[2.4cqw]">
+          <span className="text-[2.2cqw] font-semibold tracking-[0.18em] text-white/90 uppercase">Footwear</span>
+          <span className="relative grid size-[3.8cqw] place-items-center rounded-full bg-white/10 ring-1 ring-white/15">
+            <span className="block size-[1.6cqw] rounded-[0.4cqw] border-[0.3cqw] border-white/70" />
+            <span className="absolute -top-[0.8cqw] -right-[0.8cqw] grid size-[2.4cqw] place-items-center rounded-full bg-[#25d366] text-[1.4cqw] leading-none font-semibold text-[#06281a]">
+              2
+            </span>
+          </span>
+        </div>
+        <div className="grid grid-cols-2 gap-[2cqw] px-[3.6cqw]">
+          {shoes.map((shoe, index) => (
+            <div key={index} className="rounded-[1.4cqw] bg-white/[0.06] p-[1.4cqw] ring-1 ring-white/10">
+              <div className="grid aspect-[4/2.6] place-items-center rounded-[1cqw] bg-white/[0.05]">
+                <Shoe {...shoe} />
+              </div>
+              <Bar className="mt-[1.4cqw] w-3/4 bg-white/25" />
+              <div className="mt-[1cqw] flex items-center justify-between">
+                <Bar className="w-1/3 bg-[#25d366]/50" />
+                <span className="grid size-[2.8cqw] place-items-center rounded-full bg-white/15 text-[1.8cqw] leading-none text-white">+</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* WhatsApp chat with the complete order */}
+      <div className="absolute top-[7%] right-[5%] -bottom-[14%] w-[34%] overflow-hidden rounded-[4cqw] border-[0.6cqw] border-[#1c2a26] bg-[#0b141a] shadow-[0_30px_80px_-20px_rgb(0_0_0/0.9)]">
+        <div className="flex items-center gap-[1.4cqw] bg-[#1f2c33] px-[2.4cqw] pt-[3cqw] pb-[1.8cqw]">
+          <span className="size-[3.6cqw] shrink-0 rounded-full bg-[#25d366]/80" />
+          <span className="flex flex-col gap-[0.6cqw]">
+            <span className="text-[1.8cqw] leading-none font-semibold text-white">The store</span>
+            <span className="text-[1.3cqw] leading-none text-white/50">WhatsApp</span>
+          </span>
+        </div>
+        <div className="flex flex-col gap-[1.8cqw] p-[2.2cqw]">
+          <div className="self-end rounded-[1.6cqw] rounded-tr-[0.4cqw] bg-[#005c4b] p-[1.8cqw] text-white">
+            <p className="text-[1.5cqw] leading-none font-semibold">New order</p>
+            <span className="mt-[1.4cqw] flex flex-col gap-[1cqw]">
+              <Bar className="w-[16cqw] bg-white/45" />
+              <Bar className="w-[12cqw] bg-white/45" />
+              <span className="my-[0.4cqw] block h-px bg-white/20" />
+              <Bar className="w-[9cqw] bg-white/70" />
+            </span>
+            <p className="mt-[1.2cqw] text-right text-[1.1cqw] leading-none text-white/60">✓✓</p>
+          </div>
+          <div className="self-start rounded-[1.6cqw] rounded-tl-[0.4cqw] bg-[#1f2c33] p-[1.8cqw]">
+            <Bar className="w-[14cqw] bg-white/30" />
+            <Bar className="mt-[1cqw] w-[9cqw] bg-white/30" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function GramEarnerMockup() {
   return (
     <div className="absolute inset-0 bg-[radial-gradient(100%_100%_at_75%_5%,#163a63_0%,#0b1628_55%,#080b12_100%)]">
@@ -316,6 +397,7 @@ function SchoolMockup() {
 const mockups: Record<Exclude<Project["preview"]["kind"], "infrastructure">, () => ReactNode> = {
   cent: CentMockup,
   beauty: BeautyMockup,
+  whatsapp: WhatsAppStoreMockup,
   gramearner: GramEarnerMockup,
   school: SchoolMockup,
 };

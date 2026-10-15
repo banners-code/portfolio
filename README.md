@@ -114,7 +114,7 @@ Each project has:
 
 - `slug` — URL of its case study (`/work/<slug>`)
 - `title`, `tagline`, `category`, `summary`
-- `statuses` — one or more of `client`, `in-development`, `prototype`, `planning`, `case-study` (labels and descriptions are in `statusMeta`)
+- `statuses` — one or more of `built`, `client`, `in-development`, `prototype`, `planning`, `case-study` (labels and descriptions are in `statusMeta`)
 - `filters` — which filter buttons show it: `client`, `ecommerce`, `applications`, `technical`
 - `tech` — technologies **verified in the project's code**; leave empty for concepts and use `topics` instead
 - `layout` — `feature`, `standard` or `wide` (wide cards take a full row)

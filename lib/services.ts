@@ -45,6 +45,7 @@ export const services: Service[] = [
       "Shopping interfaces and cart workflows",
       "Database integration",
       "Payment integration with supported providers",
+      "WhatsApp checkout for small businesses",
     ],
   },
   {

@@ -28,4 +28,9 @@ export const faqs: { question: string; answer: string }[] = [
     answer:
       "It depends on your business and the providers available to you. In my e-commerce projects I've built Paystack and Korapay integrations, and a manual bank-transfer flow with receipt verification. I'll recommend an approach after looking at your requirements.",
   },
+  {
+    question: "I run a small business and sell on WhatsApp. Do I need online payments?",
+    answer:
+      "Not necessarily. I've built a store where customers browse and fill a cart, and checkout sends the complete order to your WhatsApp — you confirm it, and agree payment and delivery, in the chat you already use. Online payments can be added later if you want them.",
+  },
 ];

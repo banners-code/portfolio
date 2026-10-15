@@ -28,7 +28,7 @@ export function ProjectsSection() {
         />
 
         {/* Phones: one row of badges (descriptions stay available to screen readers). Larger screens: badge + description. */}
-        <dl className="mt-10 flex flex-wrap gap-2 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-4 lg:grid-cols-5" data-reveal="" style={revealDelay(80)}>
+        <dl className="mt-10 flex flex-wrap gap-2 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-4 lg:grid-cols-3" data-reveal="" style={revealDelay(80)}>
           {(Object.keys(statusMeta) as ProjectStatus[]).map((status) => (
             <div key={status} className="flex flex-col items-start gap-2">
               <dt>

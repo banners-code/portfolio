@@ -23,10 +23,12 @@ export function buildAssistantEntries(): AssistantEntry[] {
     {
       id: "ecommerce",
       question: "Do you build e-commerce sites?",
-      answer: "Yes — it's where most of my experience is. The two case studies show what each store involves.",
+      answer:
+        "Yes — it's where most of my experience is, from stores with online payments to a WhatsApp checkout for small businesses. Each case study shows what the store involves.",
       links: [
         { label: "Beauty Commerce", href: "/work/beauty-commerce" },
         { label: "CENT Originals", href: "/work/cent-originals" },
+        { label: "WhatsApp Checkout Store", href: "/work/whatsapp-checkout-store" },
       ],
     },
     {
