@@ -57,8 +57,8 @@ export function SectionRail() {
       aria-label="Page sections"
       inert={!visible}
       className={cn(
-        "fixed top-1/2 right-1.5 z-30 -translate-y-1/2 transition-[opacity,translate] duration-500 ease-[var(--ease-out-expo)] [--item:2rem] sm:right-4 sm:[--item:2.25rem]",
-        visible ? "translate-x-0 opacity-100" : "pointer-events-none translate-x-4 opacity-0",
+        "fixed top-1/2 right-1.5 z-30 -translate-y-1/2 transition-[opacity,scale] duration-500 ease-[var(--ease-out-expo)] [--item:2rem] sm:right-4 sm:[--item:2.25rem]",
+        visible ? "scale-100 opacity-100" : "pointer-events-none scale-90 opacity-0",
       )}
     >
       <div className="glass relative rounded-full bg-ink-950/55! px-0.5 py-1.5 sm:px-1">
