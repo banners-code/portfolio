@@ -65,10 +65,10 @@ components/
   brand/                     Wordmark (the Banner Tech logo image)
   assistant/                 AssistantWidget (the guided "Ask about my work" panel)
   layout/                    Navbar (scrollspy), MobileMenu, Footer
-  sections/                  HeroSection, NameMarquee, AboutSection, ProjectsSection, SkillsSection, ServicesSection, FaqSection, ContactSection
+  sections/                  HeroSection, AboutSection, ProjectsSection, SkillsSection, ServicesSection, FaqSection, ContactSection
   projects/                  ProjectCard, ProjectGrid (filters), ProjectFilters, ProjectPreview (CSS mockups), StatusBadge
   ui/                        Button, GlassCard, Badge, Container, SectionHeading, ContactForm, RevealObserver, GitHubIcon,
-                             Portrait, WhoamiTerminal, TypingCode, Marquee
+                             Portrait, WhoamiTerminal, TypingCode
 lib/
   site-config.ts             Brand, owner, contact, social links, navigation, SEO, site URL helpers
   projects.ts                Projects, statuses, filters, case studies, additional work
@@ -135,7 +135,7 @@ Each project has:
 - **`lib/services.ts`** — five services with deliverables and optional notes. There are no prices and no guarantees. Each card's "Discuss your project" link scrolls to the contact form and pre-fills the subject. Set `featured` on a service to highlight it (E-commerce is marked "Core experience"). `projectProcess` holds the three numbered steps shown under the services.
 - **`lib/faq.ts`** — the client FAQ. The answers are drawn from your services and projects; keep them in your own words and up to date.
 - **The assistant** (`lib/assistant.ts`) — the floating "Ask about my work" panel offers pre-written questions and answers built from your projects, FAQ and contact settings, so it updates when they do. It isn't AI and sends nothing anywhere. To add a question, add an entry to `buildAssistantEntries()`.
-- **Hero terminal and name band** — the hero's typed `whoami` session is in `components/ui/WhoamiTerminal.tsx`; the large name band (`components/sections/NameMarquee.tsx`) uses your name from the config.
+- **Hero terminal** — the hero's typed `whoami` session is in `components/ui/WhoamiTerminal.tsx`.
 - **No repeats** — each piece of content appears once: identity in the hero terminal, the story in About, client process under Services, and only questions answered nowhere else in the FAQ. Keep that in mind when adding content.
 
 ## Contact form setup
