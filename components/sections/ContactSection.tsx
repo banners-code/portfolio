@@ -1,6 +1,7 @@
-import { Mail, MessageCircle } from "lucide-react";
+import { Mail } from "lucide-react";
 import { isContactDeliveryConfigured } from "@/lib/contact-delivery";
 import { contactEmail, siteConfig, whatsappContact } from "@/lib/site-config";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { revealDelay } from "@/lib/utils";
 import { ContactForm, type ContactMode } from "@/components/ui/ContactForm";
 import { Container } from "@/components/ui/Container";
@@ -73,7 +74,7 @@ export function ContactSection() {
                     rel="noopener noreferrer"
                     className="group mt-2 inline-flex min-h-11 items-center gap-3 self-start text-fg transition-colors hover:text-violet-soft"
                   >
-                    <MessageCircle className="size-4 text-violet-soft" aria-hidden="true" />
+                    <WhatsAppIcon className="size-4 text-violet-soft" />
                     {whatsappContact.display}
                     <span className="sr-only"> — chat on WhatsApp (opens in a new tab)</span>
                   </a>

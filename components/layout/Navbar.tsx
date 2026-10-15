@@ -3,15 +3,18 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState, type FocusEvent } from "react";
-import { Menu, X } from "lucide-react";
-import { siteConfig } from "@/lib/site-config";
+import { Mail, Menu, X } from "lucide-react";
+import { contactEmail, siteConfig, whatsappContact } from "@/lib/site-config";
 import { cn, sectionHref } from "@/lib/utils";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { ButtonLink } from "@/components/ui/Button";
 import { GitHubIcon } from "@/components/ui/GitHubIcon";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { MobileMenu } from "./MobileMenu";
 
 const MENU_ID = "mobile-menu";
+const iconLink =
+  "grid size-10 place-items-center rounded-full text-muted transition-colors hover:bg-white/[0.06] hover:text-fg sm:size-11";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -106,16 +109,33 @@ export function Navbar() {
             })}
           </ul>
 
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-0.5 sm:gap-1.5">
+            {/* GitHub, WhatsApp and email: slightly smaller on phones so the bar fits a 320px screen. */}
             <a
               href={siteConfig.social.github}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub profile (opens in a new tab)"
-              className="grid size-11 place-items-center rounded-full text-muted transition-colors hover:bg-white/[0.06] hover:text-fg"
+              className={iconLink}
             >
-              <GitHubIcon className="size-[1.15rem]" />
+              <GitHubIcon className="size-[1.1rem] sm:size-[1.15rem]" />
             </a>
+            {whatsappContact ? (
+              <a
+                href={whatsappContact.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Chat on WhatsApp, ${whatsappContact.display} (opens in a new tab)`}
+                className={iconLink}
+              >
+                <WhatsAppIcon className="size-[1.1rem] sm:size-[1.15rem]" />
+              </a>
+            ) : null}
+            {contactEmail ? (
+              <a href={`mailto:${contactEmail}`} aria-label={`Email ${contactEmail}`} className={iconLink}>
+                <Mail className="size-[1.1rem] sm:size-[1.15rem]" aria-hidden="true" />
+              </a>
+            ) : null}
             {/* Wrapped: the button's own display class would override `hidden`. */}
             <span className="hidden sm:block">
               <ButtonLink href={sectionHref("contact")}>Let&apos;s talk</ButtonLink>
@@ -123,7 +143,7 @@ export function Navbar() {
             <button
               ref={toggleRef}
               type="button"
-              className="grid size-11 place-items-center rounded-full text-fg transition-colors hover:bg-white/[0.06] lg:hidden"
+              className="grid size-10 place-items-center rounded-full text-fg transition-colors hover:bg-white/[0.06] sm:size-11 lg:hidden"
               aria-expanded={open}
               aria-controls={MENU_ID}
               aria-label={open ? "Close menu" : "Open menu"}

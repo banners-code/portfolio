@@ -15,7 +15,7 @@ export function HeroSection() {
         {/* The whoami terminal now plays as the intro; the hero is a centred headline. */}
         <div className="relative mx-auto max-w-4xl text-center">
           <p
-            className="glass animate-rise inline-flex items-center gap-2 rounded-full px-3.5 py-2 font-mono text-[0.62rem] leading-[1.2] tracking-[0.12em] whitespace-nowrap text-fg/85 uppercase sm:gap-2.5 sm:text-[0.72rem] sm:tracking-[0.16em]"
+            className="glass animate-rise inline-flex items-center gap-2 rounded-full px-3.5 py-2 font-mono text-[0.56rem] leading-[1.2] tracking-[0.08em] whitespace-nowrap min-[360px]:text-[0.62rem] min-[360px]:tracking-[0.12em] text-fg/85 uppercase sm:gap-2.5 sm:text-[0.72rem] sm:tracking-[0.16em]"
             style={revealDelay(0)}
           >
             <span aria-hidden="true" className="size-1.5 rotate-45 bg-violet" />
