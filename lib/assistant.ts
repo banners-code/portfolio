@@ -3,14 +3,24 @@
  * right part of the site rather than repeating it. Nothing is generated and nothing is sent anywhere.
  */
 import { caseStudyProjects } from "./projects";
-import { contactEmail, siteConfig } from "./site-config";
+import { contactEmail, siteConfig, whatsappContact } from "./site-config";
 
 export type AssistantLink = { label: string; href: string; external?: boolean };
 export type AssistantEntry = { id: string; question: string; answer: string; links: AssistantLink[] };
 
+/** "Through the contact form, by email at …, or on WhatsApp at …." — only the channels that are set. */
+function contactAnswer(): string {
+  const ways = ["Through the contact form"];
+  if (contactEmail) ways.push(`by email at ${contactEmail}`);
+  if (whatsappContact) ways.push(`on WhatsApp at ${whatsappContact.display}`);
+  if (ways.length === 1) return "Through the contact form — or find my work on GitHub.";
+  return `${ways.slice(0, -1).join(", ")}, or ${ways.at(-1)}.`;
+}
+
 export function buildAssistantEntries(): AssistantEntry[] {
   const contactLinks: AssistantLink[] = [{ label: "Open the contact form", href: "/#contact" }];
   if (contactEmail) contactLinks.push({ label: `Email ${contactEmail}`, href: `mailto:${contactEmail}`, external: true });
+  if (whatsappContact) contactLinks.push({ label: "Chat on WhatsApp", href: whatsappContact.href, external: true });
   contactLinks.push({ label: "GitHub", href: siteConfig.social.github, external: true });
 
   return [
@@ -59,7 +69,7 @@ export function buildAssistantEntries(): AssistantEntry[] {
     {
       id: "contact",
       question: "How do I contact you?",
-      answer: contactEmail ? `Through the contact form, or by email at ${contactEmail}.` : "Through the contact form — or find my work on GitHub.",
+      answer: contactAnswer(),
       links: contactLinks,
     },
   ];

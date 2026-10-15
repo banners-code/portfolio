@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ArrowUpRight, Mail } from "lucide-react";
-import { contactEmail, siteConfig, socialLinks } from "@/lib/site-config";
+import { ArrowUpRight, Mail, MessageCircle } from "lucide-react";
+import { contactEmail, siteConfig, socialLinks, whatsappContact } from "@/lib/site-config";
 import { sectionHref } from "@/lib/utils";
 import { Container } from "@/components/ui/Container";
 import { Wordmark } from "@/components/brand/Wordmark";
@@ -79,6 +79,20 @@ export function Footer() {
                 </Link>
               )}
             </li>
+            {whatsappContact ? (
+              <li>
+                <a
+                  href={whatsappContact.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-10 items-center gap-1.5 text-sm text-muted transition-colors hover:text-fg"
+                >
+                  <MessageCircle className="size-3.5" aria-hidden="true" />
+                  {whatsappContact.display}
+                  <span className="sr-only"> — WhatsApp (opens in a new tab)</span>
+                </a>
+              </li>
+            ) : null}
           </ul>
         </div>
       </Container>

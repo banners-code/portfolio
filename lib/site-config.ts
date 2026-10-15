@@ -36,6 +36,8 @@ export const siteConfig = {
      * While empty, no email link is shown anywhere (the development build shows a reminder instead).
      */
     email: "antmich900@gmail.com",
+    /** WhatsApp number in international format (digits, optional leading +). Leave empty to hide it. */
+    whatsapp: "+2349055459281",
   },
 
   social: {
@@ -107,6 +109,16 @@ export function metadataBaseUrl(): URL {
 }
 
 export const contactEmail = siteConfig.contact.email.trim() || null;
+
+/** The WhatsApp number as shown (e.g. "+234 905 545 9281") and its wa.me chat link, or null. */
+export const whatsappContact = (() => {
+  const digits = siteConfig.contact.whatsapp.replace(/\D/g, "");
+  if (!digits) return null;
+  const display = digits.startsWith("234") && digits.length === 13
+    ? `+234 ${digits.slice(3, 6)} ${digits.slice(6, 9)} ${digits.slice(9)}`
+    : `+${digits}`;
+  return { display, href: `https://wa.me/${digits}` };
+})();
 
 export const socialLinks: SocialLink[] = [
   { label: "GitHub", href: siteConfig.social.github },
