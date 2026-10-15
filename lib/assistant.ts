@@ -1,7 +1,8 @@
 /**
  * The guided "Ask about my work" assistant: short, pre-written answers that point visitors to the
- * right part of the site rather than repeating it. Nothing is generated and nothing is sent anywhere.
+ * right part of the site, and repeat the FAQ answers word for word. Nothing is generated and nothing is sent anywhere.
  */
+import { faqs } from "./faq";
 import { caseStudyProjects } from "./projects";
 import { contactEmail, siteConfig, whatsappContact } from "./site-config";
 
@@ -53,12 +54,8 @@ export function buildAssistantEntries(): AssistantEntry[] {
       answer: "In three stages — plan, design & build, then launch & support. The details are under Services.",
       links: [{ label: "See how a project runs", href: "/#services" }],
     },
-    {
-      id: "pricing",
-      question: "Cost, timelines and payments?",
-      answer: "I've answered those in the FAQ.",
-      links: [{ label: "Read the FAQ", href: "/#faq" }],
-    },
+    // Every FAQ is askable here too, with the same answer as the FAQ section.
+    ...faqs.map((faq, index) => ({ id: `faq-${index}`, question: faq.question, answer: faq.answer, links: [] })),
     {
       id: "fit",
       question: "Can you take on my project?",

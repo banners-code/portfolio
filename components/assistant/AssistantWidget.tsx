@@ -184,7 +184,7 @@ export function AssistantWidget({
 
         <div className="border-t border-white/[0.07] px-4 py-3">
           {remaining.length > 0 ? (
-            <div role="group" aria-label="Questions you can ask" className="flex flex-wrap gap-1.5">
+            <div role="group" aria-label="Questions you can ask" className="flex max-h-[9.5rem] flex-wrap gap-1.5 overflow-y-auto overscroll-contain">
               {remaining.map((entry, index) => (
                 <button
                   key={entry.id}
