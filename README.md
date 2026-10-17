@@ -65,7 +65,9 @@ components/
   brand/                     Wordmark (the Banner Tech logo image)
   assistant/                 AssistantWidget (the guided "Ask about my work" panel)
   layout/                    Navbar (scrollspy), MobileMenu, Footer
-  sections/                  HeroSection, AboutSection, ProjectsSection, SkillsSection, ServicesSection, FaqSection, ContactSection
+  sections/                  HeroSection, AboutSection, ProjectsSection, BuildsSection, BotsSection, SkillsSection, ServicesSection,
+                             FaqSection, ContactSection
+  bots/                      WhatsAppBotDemo, TelegramBotDemo (the interactive phone demos) and demo-kit (phone frame, playback)
   projects/                  ProjectCard, ProjectGrid (filters), ProjectFilters, ProjectPreview (CSS mockups), StatusBadge
   ui/                        Button, GlassCard, Badge, Container, SectionHeading, ContactForm, RevealObserver, GitHubIcon,
                              Portrait, WhoamiTerminal, TypingCode
@@ -74,6 +76,8 @@ lib/
   projects.ts                Projects, statuses, filters, case studies, additional work
   skills.ts                  Skill groups and experience levels
   services.ts                Services, deliverables, the featured service and the "How a project runs" steps
+  builds.ts                  The website types in "What I can build"
+  bots.ts                    The WhatsApp and Telegram bots, and the scripts their demos play
   faq.ts                     Client FAQ
   assistant.ts               Builds the assistant's answers from the site's data
   contact.ts                 Contact form validation (shared by browser and server)
@@ -138,6 +142,7 @@ Each project has:
 - **Section numbers** come from `siteConfig.nav` (every item except Home, in order), via `sectionNumber()` in `lib/site-config.ts`. Headings, the mobile menu and the section rail all use it, so adding or reordering a nav item renumbers everything.
 - **Section rail** — `components/layout/SectionRail.tsx`: the numbered navigator on the right edge of the home page. Hidden over the hero, it appears at About; the arrow follows the current section (the same scrollspy as the navbar, `useActiveSection.ts`) and each number jumps to its section. Below 1280px it shows only while scrolling, and it hides on very short screens.
 - **What I can build** — `lib/builds.ts`: the website types in the Builds section and what each includes, with a WhatsApp quote link. Types with a case study link to it; the other previews are labelled illustrative. The hero panel rows link to these cards.
+- **Bots** — `lib/bots.ts`: the WhatsApp chatbot and the Telegram bot / Mini App in the Bots section, each with its features, a WhatsApp quote link and an interactive phone demo (`components/bots/`). The demos are scripted in the same file — the messages, the quick replies and their answers, and the Mini App's products — and run entirely in the page: nothing is sent to WhatsApp or Telegram. A demo plays the first time it scrolls into view; for reduced motion, or without JavaScript, it shows the finished conversation. The Telegram row links to the Gram Earner case study.
 - **Intro** — the home page opens with the typed `whoami` session (`components/ui/WhoamiTerminal.tsx`) full screen, via `components/ui/IntroOverlay.tsx`. It plays once per browser session, can be skipped (button or Escape), and is skipped for reduced motion.
 - **No repeats** — each piece of content appears once: identity in the hero terminal, the story in About, client process under Services, and only questions answered nowhere else in the FAQ. Keep that in mind when adding content.
 

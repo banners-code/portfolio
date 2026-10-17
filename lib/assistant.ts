@@ -43,6 +43,16 @@ export function buildAssistantEntries(): AssistantEntry[] {
       ],
     },
     {
+      id: "bots",
+      question: "Do you build WhatsApp or Telegram bots?",
+      answer:
+        "Yes — WhatsApp chatbots that answer your customers while you're away, and Telegram bots that open your website inside Telegram as a Mini App. You can try a demo of each in the Bots section.",
+      links: [
+        { label: "Try the bot demos", href: "/#bots" },
+        { label: "Gram Earner (Telegram Mini App)", href: "/work/gram-earner" },
+      ],
+    },
+    {
       id: "stack",
       question: "What do you build with?",
       answer: "Mainly Next.js, TypeScript and Tailwind CSS, with Supabase for data. The Skills section shows everything, with how I've used each one.",
