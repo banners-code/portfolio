@@ -13,7 +13,7 @@ export const siteConfig = {
     name: "Banner Tech",
     tagline: "Ideas, built into digital experiences.",
     description:
-      "Web developer and Computer Science student building websites, e-commerce platforms and application prototypes — and solving the technical problems that come with putting them online.",
+      "Web developer and Computer Science student building websites, e-commerce platforms, WhatsApp and Telegram bots and application prototypes — and solving the technical problems that come with putting them online.",
     /** Short line under the footer logo (kept different from the hero and meta description). */
     footerLine: "The web development work of Nwigboji Anthony Izuchukwu — from first idea to live domain.",
     /** The hand-lettered wordmark (white on transparent). Replace the file to change the logo everywhere. */
@@ -54,6 +54,7 @@ export const siteConfig = {
     { id: "about", label: "About" },
     { id: "projects", label: "Projects" },
     { id: "builds", label: "Builds" },
+    { id: "bots", label: "Bots" },
     { id: "skills", label: "Skills" },
     { id: "services", label: "Services" },
     { id: "faq", label: "FAQ" },
@@ -67,6 +68,9 @@ export const siteConfig = {
       "Next.js developer",
       "frontend developer",
       "e-commerce website development",
+      "WhatsApp chatbot developer",
+      "Telegram bot developer",
+      "Telegram Mini App",
       "Nigeria web developer",
       "TypeScript",
       "Tailwind CSS",
